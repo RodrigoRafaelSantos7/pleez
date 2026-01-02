@@ -3,13 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "lint": "eslint",
-    "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "clean": "rm -rf .nitro .output .tanstack node_modules",
+    "dev": "bun --bun vite dev",
+    "build": "bun --bun vite build",
+    "serve": "bun --bun vite preview",
+    "start": "bun run .output/server/index.mjs",
+    "lint": "oxlint -c .config/.oxlintrc.json --type-aware --type-check --deny-warnings --report-unused-disable-directives",
+    "fmt": "oxfmt -c .config/.oxfmtrc.json",
+    "knip": "knip -c .config/knip.json"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -43,7 +44,9 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
     "jsdom": "^27.0.0",
-    "prettier": "^3.5.3",
+    "oxfmt": "^0.21.0",
+    "oxlint": "^1.36.0",
+    "oxlint-tsgolint": "^0.10.1",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",

@@ -1,29 +1,37 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
-  
   "compilerOptions": {
+    // Build Performance
+    "incremental": true,
+    // "composite": true,
+    "libReplacement": false,
+    "tsBuildInfoFile": "${configDir}/.cache/tsbuildinfo.json",
+    // Module System
     "target": "ES2022",
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["dom", "dom.iterable", "ES2022"],
     "types": ["vite/client"],
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": false,
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    // "isolatedDeclarations": true,
+    "erasableSyntaxOnly": true,
     "noEmit": true,
-
-    /* Linting */
-    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    // Import Resolution
+    "verbatimModuleSyntax": true,
+    "rewriteRelativeImportExtensions": true,
+    "allowImportingTsExtensions": true,
+    // Type Safety
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
+    // "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    // "noUncheckedIndexedAccess": true,
+    // Development
+    "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "#convex/*": ["./convex/*"]
     }
-  }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["./node_modules"]
 }

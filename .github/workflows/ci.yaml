@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["*"]
+  push:
+    branches: ["main"]
+  merge_group:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  check-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup
+        uses: ./.github/setup
+
+      - name: Lint (Oxlint)
+        run: bun lint
+
+  check-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup
+        uses: ./.github/setup
+
+      - name: Format (Oxfmt)
+        run: bun fmt
