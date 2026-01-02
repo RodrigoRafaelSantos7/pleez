@@ -34,7 +34,13 @@ export function Filters({ filters, onFiltersChange }: FiltersProps) {
         <Popover>
           <PopoverTrigger
             render={
-              <Button variant="outline" className={cn("w-[180px] justify-start text-left font-normal", !startDateObj && "text-muted-foreground")}>
+              <Button
+                variant="outline"
+                className={cn(
+                  "w-[180px] justify-start text-left font-normal",
+                  !startDateObj && "text-muted-foreground",
+                )}
+              >
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {startDateObj ? format(startDateObj, "MMM d, yyyy") : "Start date"}
               </Button>
@@ -60,7 +66,13 @@ export function Filters({ filters, onFiltersChange }: FiltersProps) {
         <Popover>
           <PopoverTrigger
             render={
-              <Button variant="outline" className={cn("w-[180px] justify-start text-left font-normal", !endDateObj && "text-muted-foreground")}>
+              <Button
+                variant="outline"
+                className={cn(
+                  "w-[180px] justify-start text-left font-normal",
+                  !endDateObj && "text-muted-foreground",
+                )}
+              >
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {endDateObj ? format(endDateObj, "MMM d, yyyy") : "End date"}
               </Button>
@@ -120,4 +132,3 @@ export function Filters({ filters, onFiltersChange }: FiltersProps) {
     </div>
   );
 }
-

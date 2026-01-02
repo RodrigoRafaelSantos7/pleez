@@ -1,14 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import type { MenuItemAnalytics } from "#convex/analytics";
-import {
-  TrendUp,
-  CurrencyDollar,
-  Package,
-  Percent,
-  Lightning,
-  Tag,
-} from "@phosphor-icons/react";
+import { TrendUp, CurrencyDollar, Package, Percent, Lightning, Tag } from "@phosphor-icons/react";
 
 type RecommendationCardProps = {
   item: MenuItemAnalytics;
@@ -35,22 +28,15 @@ const categoryColors: Record<string, string> = {
 
 export function RecommendationCard({ item }: RecommendationCardProps) {
   const promoPercentage =
-    item.totalQuantity > 0
-      ? Math.round((item.promoQuantity / item.totalQuantity) * 100)
-      : 0;
+    item.totalQuantity > 0 ? Math.round((item.promoQuantity / item.totalQuantity) * 100) : 0;
 
   return (
     <Card className="group hover:ring-primary/30 transition-all duration-200 hover:shadow-lg">
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
-            <CardTitle className="truncate text-base font-semibold">
-              {item.item_name}
-            </CardTitle>
-            <Badge
-              variant="secondary"
-              className={categoryColors[item.category] || ""}
-            >
+            <CardTitle className="truncate text-base font-semibold">{item.item_name}</CardTitle>
+            <Badge variant="secondary" className={categoryColors[item.category] || ""}>
               {item.category}
             </Badge>
           </div>
@@ -121,4 +107,3 @@ export function RecommendationCard({ item }: RecommendationCardProps) {
     </Card>
   );
 }
-

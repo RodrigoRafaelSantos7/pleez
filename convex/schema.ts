@@ -22,4 +22,3 @@ export default defineSchema({
     .index("by_platform", ["platform"])
     .index("by_timestamp", ["timestamp"]),
 });
-

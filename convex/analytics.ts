@@ -68,9 +68,7 @@ export const getMenuAnalytics = query({
     }
 
     // Create a map for quick menu item lookup
-    const menuItemMap = new Map(
-      menuItems.map((item) => [String(item.item_id), item])
-    );
+    const menuItemMap = new Map(menuItems.map((item) => [String(item.item_id), item]));
 
     // Aggregate order data per item
     const itemStats = new Map<
@@ -125,8 +123,7 @@ export const getMenuAnalytics = query({
         nonPromoRevenue: 0,
       };
 
-      const marginPercent =
-        ((item.selling_price - item.cost_price) / item.selling_price) * 100;
+      const marginPercent = ((item.selling_price - item.cost_price) / item.selling_price) * 100;
       const revenue = stats.totalQuantity * item.selling_price;
       const profit = stats.totalQuantity * (item.selling_price - item.cost_price);
 
@@ -154,9 +151,7 @@ export const getMenuAnalytics = query({
       .filter((q) => q > 0)
       .sort((a, b) => a - b);
     const medianQuantity =
-      quantities.length > 0
-        ? quantities[Math.floor(quantities.length / 2)]
-        : 0;
+      quantities.length > 0 ? quantities[Math.floor(quantities.length / 2)] : 0;
 
     // Categorize items
     const HIGH_MARGIN_THRESHOLD = 65;
@@ -178,12 +173,8 @@ export const getMenuAnalytics = query({
 
     // Group by recommendation
     const promote = itemAnalytics.filter((i) => i.recommendation === "promote");
-    const priceOptimize = itemAnalytics.filter(
-      (i) => i.recommendation === "price_optimize"
-    );
-    const renameRemove = itemAnalytics.filter(
-      (i) => i.recommendation === "rename_remove"
-    );
+    const priceOptimize = itemAnalytics.filter((i) => i.recommendation === "price_optimize");
+    const renameRemove = itemAnalytics.filter((i) => i.recommendation === "rename_remove");
     const maintain = itemAnalytics.filter((i) => i.recommendation === "maintain");
 
     // Calculate summary stats
@@ -191,24 +182,18 @@ export const getMenuAnalytics = query({
     const totalProfit = itemAnalytics.reduce((sum, i) => sum + i.profit, 0);
     const totalOrders = orders.length;
     const promoOrdersPercent =
-      totalOrders > 0
-        ? Math.round((totalPromoOrders / totalOrders) * 100 * 10) / 10
-        : 0;
+      totalOrders > 0 ? Math.round((totalPromoOrders / totalOrders) * 100 * 10) / 10 : 0;
     const avgMargin =
       itemAnalytics.length > 0
         ? Math.round(
-            (itemAnalytics.reduce((sum, i) => sum + i.marginPercent, 0) /
-              itemAnalytics.length) *
-              10
+            (itemAnalytics.reduce((sum, i) => sum + i.marginPercent, 0) / itemAnalytics.length) *
+              10,
           ) / 10
         : 0;
 
     // Calculate promo impact
     const promoRevenue = itemAnalytics.reduce((sum, i) => sum + i.promoRevenue, 0);
-    const nonPromoRevenue = itemAnalytics.reduce(
-      (sum, i) => sum + i.nonPromoRevenue,
-      0
-    );
+    const nonPromoRevenue = itemAnalytics.reduce((sum, i) => sum + i.nonPromoRevenue, 0);
 
     return {
       items: itemAnalytics,
@@ -229,9 +214,7 @@ export const getMenuAnalytics = query({
         promoOrderCount: totalPromoOrders,
         nonPromoOrderCount: totalNonPromoOrders,
         promoAvgOrderValue:
-          totalPromoOrders > 0
-            ? Math.round((promoRevenue / totalPromoOrders) * 100) / 100
-            : 0,
+          totalPromoOrders > 0 ? Math.round((promoRevenue / totalPromoOrders) * 100) / 100 : 0,
         nonPromoAvgOrderValue:
           totalNonPromoOrders > 0
             ? Math.round((nonPromoRevenue / totalNonPromoOrders) * 100) / 100
@@ -240,4 +223,3 @@ export const getMenuAnalytics = query({
     };
   },
 });
-

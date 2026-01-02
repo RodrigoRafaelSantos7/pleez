@@ -1,12 +1,7 @@
 import type { MenuItemAnalytics } from "#convex/analytics";
 import { RecommendationCard } from "./RecommendationCard";
 import { Badge } from "~/components/ui/badge";
-import {
-  Megaphone,
-  CurrencyCircleDollar,
-  Trash,
-  CheckCircle,
-} from "@phosphor-icons/react";
+import { Megaphone, CurrencyCircleDollar, Trash, CheckCircle } from "@phosphor-icons/react";
 
 type CategorySectionProps = {
   category: "promote" | "price_optimize" | "rename_remove" | "maintain";
@@ -79,4 +74,3 @@ export function CategorySection({ category, items }: CategorySectionProps) {
     </section>
   );
 }
-
