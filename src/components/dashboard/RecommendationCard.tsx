@@ -1,16 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import type { MenuItemAnalytics } from "#convex/analytics";
-import { TrendUp, CurrencyDollar, Package, Percent, Lightning, Tag } from "@phosphor-icons/react";
+import { TrendUp, CurrencyEur, Package, Percent, Lightning } from "@phosphor-icons/react";
 
 type RecommendationCardProps = {
   item: MenuItemAnalytics;
 };
 
 function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-GB", {
+  return new Intl.NumberFormat("de-DE", {
     style: "currency",
-    currency: "GBP",
+    currency: "EUR",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
@@ -45,7 +45,7 @@ export function RecommendationCard({ item }: RecommendationCardProps) {
               {formatCurrency(item.selling_price)}
             </div>
             <div className="text-xs text-muted-foreground">
-              Cost: {formatCurrency(item.cost_price)}
+              Unit cost: {formatCurrency(item.cost_price)}
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ export function RecommendationCard({ item }: RecommendationCardProps) {
           <div className="flex items-center gap-2 rounded-lg bg-muted/50 p-2">
             <Percent weight="duotone" className="h-4 w-4 text-chart-3" />
             <div>
-              <div className="text-xs text-muted-foreground">Margin</div>
+              <div className="text-xs text-muted-foreground">Profit Margin</div>
               <div className="font-semibold">{item.marginPercent}%</div>
             </div>
           </div>
@@ -64,15 +64,15 @@ export function RecommendationCard({ item }: RecommendationCardProps) {
           <div className="flex items-center gap-2 rounded-lg bg-muted/50 p-2">
             <Package weight="duotone" className="h-4 w-4 text-chart-2" />
             <div>
-              <div className="text-xs text-muted-foreground">Sold</div>
+              <div className="text-xs text-muted-foreground">Units Sold</div>
               <div className="font-semibold">{formatNumber(item.totalQuantity)}</div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 rounded-lg bg-muted/50 p-2">
-            <CurrencyDollar weight="duotone" className="h-4 w-4 text-chart-1" />
+            <CurrencyEur weight="duotone" className="h-4 w-4 text-chart-1" />
             <div>
-              <div className="text-xs text-muted-foreground">Revenue</div>
+              <div className="text-xs text-muted-foreground">Total Revenue</div>
               <div className="font-semibold">{formatCurrency(item.revenue)}</div>
             </div>
           </div>
@@ -80,24 +80,23 @@ export function RecommendationCard({ item }: RecommendationCardProps) {
           <div className="flex items-center gap-2 rounded-lg bg-muted/50 p-2">
             <TrendUp weight="duotone" className="h-4 w-4 text-emerald-500" />
             <div>
-              <div className="text-xs text-muted-foreground">Profit</div>
+              <div className="text-xs text-muted-foreground">Total Profit</div>
               <div className="font-semibold">{formatCurrency(item.profit)}</div>
             </div>
           </div>
         </div>
 
         {item.promoQuantity > 0 && (
-          <div className="flex items-center gap-2 rounded-lg border border-dashed p-2">
+          <div className="flex items-center gap-2 rounded-lg border border-dashed border-amber-500/30 bg-amber-500/5 p-2">
             <Lightning weight="fill" className="h-4 w-4 text-amber-500" />
             <div className="flex-1">
-              <div className="text-xs text-muted-foreground">Promo orders</div>
+              <div className="text-xs text-muted-foreground">Sold via Promotions</div>
               <div className="flex items-center gap-2">
                 <span className="font-medium">
-                  {formatNumber(item.promoQuantity)} ({promoPercentage}%)
+                  {formatNumber(item.promoQuantity)} units ({promoPercentage}%)
                 </span>
-                <Tag weight="duotone" className="h-3 w-3 text-muted-foreground" />
                 <span className="text-xs text-muted-foreground">
-                  {formatCurrency(item.promoRevenue)}
+                  = {formatCurrency(item.promoRevenue)} revenue
                 </span>
               </div>
             </div>

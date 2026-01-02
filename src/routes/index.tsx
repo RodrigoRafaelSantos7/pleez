@@ -9,7 +9,7 @@ import { PromoImpactPanel } from "~/components/dashboard/PromoImpactPanel";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Hamburger,
-  CurrencyDollar,
+  CurrencyEur,
   TrendUp,
   ShoppingCart,
   Percent,
@@ -18,9 +18,9 @@ import {
 export const Route = createFileRoute("/")({ component: Dashboard });
 
 function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-GB", {
+  return new Intl.NumberFormat("de-DE", {
     style: "currency",
-    currency: "GBP",
+    currency: "EUR",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
@@ -91,11 +91,12 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
           <CardContent className="pt-4">
             <div className="flex items-center gap-3">
               <div className="rounded-lg bg-chart-1/10 p-2">
-                <CurrencyDollar weight="duotone" className="h-5 w-5 text-chart-1" />
+                <CurrencyEur weight="duotone" className="h-5 w-5 text-chart-1" />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Total Revenue</p>
                 <p className="text-2xl font-bold">{formatCurrency(data.summary.totalRevenue)}</p>
+                <p className="text-xs text-muted-foreground">Gross sales value</p>
               </div>
             </div>
           </CardContent>
@@ -110,6 +111,7 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
               <div>
                 <p className="text-sm text-muted-foreground">Total Profit</p>
                 <p className="text-2xl font-bold">{formatCurrency(data.summary.totalProfit)}</p>
+                <p className="text-xs text-muted-foreground">After cost deductions</p>
               </div>
             </div>
           </CardContent>
@@ -124,6 +126,7 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
               <div>
                 <p className="text-sm text-muted-foreground">Total Orders</p>
                 <p className="text-2xl font-bold">{formatNumber(data.summary.totalOrders)}</p>
+                <p className="text-xs text-muted-foreground">Completed transactions</p>
               </div>
             </div>
           </CardContent>
@@ -136,8 +139,9 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
                 <Percent weight="duotone" className="h-5 w-5 text-chart-2" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Avg. Margin</p>
+                <p className="text-sm text-muted-foreground">Average Margin</p>
                 <p className="text-2xl font-bold">{data.summary.avgMargin}%</p>
+                <p className="text-xs text-muted-foreground">Profit per item</p>
               </div>
             </div>
           </CardContent>
@@ -150,8 +154,9 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
                 <Hamburger weight="duotone" className="h-5 w-5 text-amber-500" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Promo Orders</p>
+                <p className="text-sm text-muted-foreground">Orders with Promos</p>
                 <p className="text-2xl font-bold">{data.summary.promoOrdersPercent}%</p>
+                <p className="text-xs text-muted-foreground">Discounted orders</p>
               </div>
             </div>
           </CardContent>

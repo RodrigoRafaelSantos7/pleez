@@ -16,9 +16,9 @@ type PromoImpactPanelProps = {
 };
 
 function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-GB", {
+  return new Intl.NumberFormat("de-DE", {
     style: "currency",
-    currency: "GBP",
+    currency: "EUR",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
@@ -71,44 +71,44 @@ export function PromoImpactPanel({ promoImpact }: PromoImpactPanelProps) {
           <div className="rounded-lg border p-4">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Receipt weight="duotone" className="h-4 w-4" />
-              <span className="text-sm">Promo Revenue</span>
+              <span className="text-sm">Revenue from Promos</span>
             </div>
             <div className="mt-1 text-2xl font-bold">
               {formatCurrency(promoImpact.promoRevenue)}
             </div>
             <div className="text-xs text-muted-foreground">
-              {promoRevenuePercent.toFixed(1)}% of total
+              {promoRevenuePercent.toFixed(1)}% of total revenue
             </div>
           </div>
 
           <div className="rounded-lg border p-4">
             <div className="flex items-center gap-2 text-muted-foreground">
               <ShoppingCart weight="duotone" className="h-4 w-4" />
-              <span className="text-sm">Promo Orders</span>
+              <span className="text-sm">Orders with Promos</span>
             </div>
             <div className="mt-1 text-2xl font-bold">
               {formatNumber(promoImpact.promoOrderCount)}
             </div>
             <div className="text-xs text-muted-foreground">
-              {promoOrderPercent.toFixed(1)}% of orders
+              {promoOrderPercent.toFixed(1)}% of all orders
             </div>
           </div>
 
           <div className="rounded-lg border p-4">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Lightning weight="duotone" className="h-4 w-4" />
-              <span className="text-sm">Promo AOV</span>
+              <span className="text-sm">Avg. Promo Order Value</span>
             </div>
             <div className="mt-1 text-2xl font-bold">
               {formatCurrency(promoImpact.promoAvgOrderValue)}
             </div>
-            <div className="text-xs text-muted-foreground">per promo order</div>
+            <div className="text-xs text-muted-foreground">average spend per promo order</div>
           </div>
 
           <div className="rounded-lg border p-4">
             <div className="flex items-center gap-2 text-muted-foreground">
               <TrendDown weight="duotone" className="h-4 w-4" />
-              <span className="text-sm">AOV Difference</span>
+              <span className="text-sm">Promo vs Regular Gap</span>
             </div>
             <div
               className={`mt-1 text-2xl font-bold ${aovDifference > 0 ? "text-rose-500" : "text-emerald-500"}`}
@@ -117,7 +117,7 @@ export function PromoImpactPanel({ promoImpact }: PromoImpactPanelProps) {
               {formatCurrency(Math.abs(aovDifference))}
             </div>
             <div className="text-xs text-muted-foreground">
-              {aovDifferencePercent.toFixed(1)}% vs regular
+              {aovDifferencePercent.toFixed(1)}% difference per order
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export function PromoImpactPanel({ promoImpact }: PromoImpactPanelProps) {
         {/* Charts */}
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-2">
-            <h4 className="text-sm font-medium">Order Distribution</h4>
+            <h4 className="text-sm font-medium">Order Breakdown by Type</h4>
             <ChartContainer config={chartConfig} className="h-[200px]">
               <BarChart data={orderChartData} layout="vertical">
                 <XAxis type="number" hide />
@@ -147,7 +147,7 @@ export function PromoImpactPanel({ promoImpact }: PromoImpactPanelProps) {
           </div>
 
           <div className="space-y-2">
-            <h4 className="text-sm font-medium">Revenue Comparison</h4>
+            <h4 className="text-sm font-medium">Revenue Split: Promo vs Regular</h4>
             <div className="space-y-4 pt-2">
               <div>
                 <div className="mb-1 flex items-center justify-between text-sm">
@@ -190,13 +190,13 @@ export function PromoImpactPanel({ promoImpact }: PromoImpactPanelProps) {
               <Lightning weight="fill" className="mt-0.5 h-5 w-5 text-amber-500" />
               <div>
                 <h4 className="font-medium text-amber-600 dark:text-amber-400">
-                  Promo Impact Insight
+                  Key Insight: Lower Promo Basket Value
                 </h4>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Promo orders have a {formatCurrency(aovDifference)} (
-                  {aovDifferencePercent.toFixed(1)}%) lower average order value compared to regular
-                  orders. Consider reviewing your 2-for-1 promotions to ensure they're driving
-                  profitable volume, not just discounted sales.
+                  Customers using promotions spend {formatCurrency(aovDifference)} less per order (
+                  {aovDifferencePercent.toFixed(1)}% below regular orders). This suggests promotions
+                  may be attracting smaller baskets. Consider bundling strategies or minimum spend
+                  thresholds to boost promo order values.
                 </p>
               </div>
             </div>
