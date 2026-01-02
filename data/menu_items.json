@@ -1,0 +1,142 @@
+[
+  {
+    "item_id": 101,
+    "item_name": "Classic Burger",
+    "category": "Burger",
+    "cost_price": 3.5,
+    "selling_price": 12.0
+  },
+  {
+    "item_id": 102,
+    "item_name": "Cheese Smash",
+    "category": "Burger",
+    "cost_price": 4.0,
+    "selling_price": 14.0
+  },
+  {
+    "item_id": 103,
+    "item_name": "Bacon King",
+    "category": "Burger",
+    "cost_price": 5.5,
+    "selling_price": 16.0
+  },
+  {
+    "item_id": 104,
+    "item_name": "Vegan Delight",
+    "category": "Burger",
+    "cost_price": 4.5,
+    "selling_price": 15.0
+  },
+  {
+    "item_id": 105,
+    "item_name": "Chicken Royale",
+    "category": "Burger",
+    "cost_price": 3.8,
+    "selling_price": 13.0
+  },
+  {
+    "item_id": 106,
+    "item_name": "Truffle Burger",
+    "category": "Burger",
+    "cost_price": 8.0,
+    "selling_price": 22.0
+  },
+  {
+    "item_id": 107,
+    "item_name": "Fish Filet",
+    "category": "Burger",
+    "cost_price": 4.0,
+    "selling_price": 13.0
+  },
+  {
+    "item_id": 108,
+    "item_name": "Spicy BBQ",
+    "category": "Burger",
+    "cost_price": 4.2,
+    "selling_price": 14.5
+  },
+  {
+    "item_id": 109,
+    "item_name": "Kids Mini",
+    "category": "Burger",
+    "cost_price": 2.5,
+    "selling_price": 8.0
+  },
+  {
+    "item_id": 110,
+    "item_name": "Mega Stack",
+    "category": "Burger",
+    "cost_price": 7.0,
+    "selling_price": 19.0
+  },
+  {
+    "item_id": 111,
+    "item_name": "Fries (Reg)",
+    "category": "Side",
+    "cost_price": 0.5,
+    "selling_price": 4.0
+  },
+  {
+    "item_id": 112,
+    "item_name": "Fries (Large)",
+    "category": "Side",
+    "cost_price": 0.8,
+    "selling_price": 5.5
+  },
+  {
+    "item_id": 113,
+    "item_name": "Onion Rings",
+    "category": "Side",
+    "cost_price": 1.2,
+    "selling_price": 6.0
+  },
+  {
+    "item_id": 114,
+    "item_name": "Mozzarella Sticks",
+    "category": "Side",
+    "cost_price": 2.0,
+    "selling_price": 8.0
+  },
+  {
+    "item_id": 115,
+    "item_name": "Coleslaw",
+    "category": "Side",
+    "cost_price": 0.8,
+    "selling_price": 3.0
+  },
+  {
+    "item_id": 116,
+    "item_name": "Coke",
+    "category": "Drink",
+    "cost_price": 0.3,
+    "selling_price": 3.0
+  },
+  {
+    "item_id": 117,
+    "item_name": "Water",
+    "category": "Drink",
+    "cost_price": 0.2,
+    "selling_price": 2.0
+  },
+  {
+    "item_id": 118,
+    "item_name": "Milkshake",
+    "category": "Drink",
+    "cost_price": 1.5,
+    "selling_price": 6.0
+  },
+  {
+    "item_id": 119,
+    "item_name": "Lemonade",
+    "category": "Drink",
+    "cost_price": 0.4,
+    "selling_price": 3.5
+  },
+  {
+    "item_id": 120,
+    "item_name": "Iced Tea",
+    "category": "Drink",
+    "cost_price": 0.3,
+    "selling_price": 3.0
+  }
+]
