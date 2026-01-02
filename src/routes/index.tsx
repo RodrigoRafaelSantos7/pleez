@@ -94,9 +94,11 @@ function DashboardContent({ filters }: { filters: FiltersState }) {
                 <CurrencyEur weight="duotone" className="h-5 w-5 text-chart-1" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Total Revenue</p>
+                <p className="text-sm text-muted-foreground">Net Revenue</p>
                 <p className="text-2xl font-bold">{formatCurrency(data.summary.totalRevenue)}</p>
-                <p className="text-xs text-muted-foreground">Gross sales value</p>
+                <p className="text-xs text-muted-foreground">
+                  List revenue: {formatCurrency(data.summary.totalListRevenue)}
+                </p>
               </div>
             </div>
           </CardContent>
