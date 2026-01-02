@@ -39,7 +39,6 @@
         "oxfmt": "^0.21.0",
         "oxlint": "^1.36.0",
         "oxlint-tsgolint": "^0.10.1",
-        "prettier": "^3.5.3",
         "typescript": "^5.7.2",
         "vite": "^7.1.7",
         "vitest": "^3.0.5",
